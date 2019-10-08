@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import xlrd
 import openpyxl
 from collections import OrderedDict
@@ -17,13 +18,14 @@ parser.add_argument("-m", "--mode", nargs=1, help="mode for -j (default is merge
 args = parser.parse_args()
 
 #List of junk in city names
-removal_list = [" г"," пгт"," с"," ст", " рп", " п", " им", " c/c", "с/с ", "с/о", " т", " д", " дп", " мкр", "аул", " х", " сл", "ст-ца", "д. ", " ж/д_ст", " кв-л", " нп", " тер", " кп", " м"]
+removal_list = [" ж/д_ст", " г", " пгт", "ст-ца"," ст", " рп", " п", " им", " c/c", "с/с ", "с/о", " сл", " т", " дп", " д", " мкр", "аул", " х", " с", "т-ца", "д. ", " кв-л", " нп", " тер", " кп", " м"]
 
 #Get coordinates
 def locate(region, city):
     key = '55661af4-6e41-410b-bc0a-266aad439920'
     location = '{} {}'.format(region, city)
     api_request = 'https://geocode-maps.yandex.ru/1.x/?apikey={}&geocode={}'.format(key, location)
+    time.sleep(0.3)
     responce = requests.get(api_request)
     root = ElementTree.fromstring(responce.content)
     for child in root.iter('*'):
