@@ -25,7 +25,7 @@ def locate(region, city):
     key = '55661af4-6e41-410b-bc0a-266aad439920'
     location = '{} {}'.format(region, city)
     api_request = 'https://geocode-maps.yandex.ru/1.x/?apikey={}&geocode={}'.format(key, location)
-    time.sleep(0.3)
+    time.sleep(0.5)
     responce = requests.get(api_request)
     root = ElementTree.fromstring(responce.content)
     for child in root.iter('*'):
@@ -95,12 +95,12 @@ def xlsx_parser(xlsx_file):
                     data = OrderedDict()
                     data['region'] = row[2].value
                     city =  row[1].value
-                    for word in removal_list:
-                        city = city.replace(word, "")
-                    data['city'] = city
                     data['isLoyaltyAvailable'] = bool(row[3].value)
                     print('Parsing {} {}'.format(row[2].value, city))
                     coord = locate(row[2].value, row[1].value)
+                    for word in removal_list:
+                        city = city.replace(word, "")
+                    data['city'] = city
                     data['lat'] = coord.split()[1]
                     data ['lon'] = coord.split()[0]
                     data['isHealthyClubAvailable'] = bool(row[4].value)
