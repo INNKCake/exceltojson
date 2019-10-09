@@ -18,7 +18,7 @@ parser.add_argument("-m", "--mode", nargs=1, help="mode for -j (default is merge
 args = parser.parse_args()
 
 #List of junk in city names
-removal_list = [" ж/д_ст", " г", " пгт", "ст-ца"," ст", " рп", " п", " им", " c/c", "с/с ", "с/о", " сл", " т", " дп", " д", " мкр", "аул", " х", " с", "т-ца", "д. ", " кв-л", " нп", " тер", " кп", " м"]
+removal_list = [" ж/д_ст", " г", " пгт", " ст-ца", " сл"," ст", " рп", " п", " им", " c/c", "с/с ", "с/о", " сл", " т", " дп", "д. ", " д", " мкр", "аул", " х", " с", " т-ца", " кв-л", " нп", " тер", " кп", " м"]
 
 #Get coordinates
 def locate(region, city):
