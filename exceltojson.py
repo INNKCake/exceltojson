@@ -22,7 +22,7 @@ removal_list = [" ж/д_ст", " г", " пгт", " ст-ца", " сл"," ст", 
 
 #Get coordinates
 def locate(region, city):
-    key = '55661af4-6e41-410b-bc0a-266aad439920'
+    key = '' #insert your key here
     location = '{} {}'.format(region, city)
     api_request = 'https://geocode-maps.yandex.ru/1.x/?apikey={}&geocode={}'.format(key, location)
     time.sleep(0.5)
